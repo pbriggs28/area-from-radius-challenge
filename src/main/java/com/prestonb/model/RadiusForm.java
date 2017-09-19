@@ -1,14 +1,14 @@
 package com.prestonb.model;
 
-import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 public class RadiusForm {
 
-	@NotNull(message = "Radius must be provided")
-	@Min(value = 1, message = "Radius must be between 1 and 100")
-	@DecimalMax(value = "100.00", message = "Radius must be between 1 and 100")
+	@NotNull
+	@Min(value = 1)
+	@Max(value = 100)
 	private Double radius;
 
 	public Double getRadius() {
