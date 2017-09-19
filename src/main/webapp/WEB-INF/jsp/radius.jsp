@@ -45,10 +45,13 @@
 
 
 
-
 <!-- Obviously in a real project this would be extracted out into a js file -->
 
 <script>
+var notEmptyErrMsg = '${msgSrc.getMessage("NotNull.radius", null, null)}';
+var numericErrMsg = '${msgSrc.getMessage("typeMismatch.radius", null, null)}';
+var betweenErrMsg = '${msgSrc.getMessage("Min.radius", null, null)}';
+
 $(document).ready(function() {
     $('#radiusForm').bootstrapValidator({
         container: '#messages',
@@ -61,15 +64,15 @@ $(document).ready(function() {
             radius: {
                 validators: {
                     notEmpty: {
-                        message: 'Radius must be provided'
+                        message: notEmptyErrMsg
                     },
                     numeric: {
-                    	message: 'Radius must be numeric'
+                    	message: numericErrMsg
                     },
                     between: {
                         min: 1,
                         max: 100,
-                        message: 'Radius must be between 1 and 100'
+                        message: betweenErrMsg
                     }
                 }
             }
