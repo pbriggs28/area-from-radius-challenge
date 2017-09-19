@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	
+	<!-- Call the default Spring Boot logging config -->
+	<include resource="org/springframework/boot/logging/logback/base.xml" />
+	
+	<!-- Create a logger for our app -->
+	<logger name="com.prestonb" additivity="false">
+		<appender-ref ref="CONSOLE" />
+<!-- 		<appender-ref ref="FILE" /> -->
+	</logger>
+</configuration>
