@@ -18,12 +18,10 @@
 <body>
 
 <springForm:form id="radiusForm" method="POST" cssClass="form-horizontal mx-auto" cssStyle="padding-top:200px">
-<!-- <form id="radiusForm" method="POST" class="form-horizontal mx-auto" style="padding-top:200px"> -->
     <div class="form-group">
         <label class="col-md-3 control-label">Radius</label>
         <div class="col-md-6">
         	<springForm:input path="radius" cssClass="form-control" />
-<!--             <input type="text" class="form-control" name="radius" /> -->
         </div>
     </div>
 
@@ -40,14 +38,12 @@
     <c:if test="${not empty area}">
 	    <div class="text-success text-center">The area is: ${area}</div>    
     </c:if>
-<!-- </form> -->
 </springForm:form>
 
-
-
-<!-- Obviously in a real project this would be extracted out into a js file -->
-
 <script>
+
+<!-- Obviously in a real project this would be extracted out into js files -->
+
 var notEmptyErrMsg = '${msgSrc.getMessage("NotNull.radius", null, null)}';
 var numericErrMsg = '${msgSrc.getMessage("typeMismatch.radius", null, null)}';
 var betweenErrMsg = '${msgSrc.getMessage("Min.radius", null, null)}';

@@ -27,7 +27,7 @@ public class RadiusController {
 	@Autowired private RadiusService radiusService;
 	@Autowired private MessageSource msgSrc;
 
-	@ModelAttribute(name="msgSrc")
+	@ModelAttribute(name = Models.MESSAGE_SOURCE)
 	public MessageSource msgSourceBean() {
 		return msgSrc;
 	}
@@ -47,16 +47,13 @@ public class RadiusController {
 
 	@RequestMapping(value = RequestMappings.RADIUS, method = RequestMethod.POST)
 	public String radiusPagePost(ModelMap model, 
-			@ModelAttribute(value = Models.COMMAND ) @Valid RadiusForm form,
-			BindingResult errors) {
+			@ModelAttribute(value = Models.COMMAND ) @Valid RadiusForm form, BindingResult errors) {
 		
-		if(errors.hasErrors()) {
-			model.addAttribute(Models.ERROR, errors.getFieldError().getDefaultMessage());
+		if(errors.hasErrors())
 			return Views.RADIUS;
-		} else {
-			model.addAttribute(Models.AREA, radiusService.calculateArea(form.getRadius()));
-		}
 
+		model.addAttribute(Models.AREA, radiusService.calculateArea(form.getRadius()));
+		
 		return Views.RADIUS;
 	}
 }

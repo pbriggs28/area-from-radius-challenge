@@ -7,6 +7,5 @@
 	<!-- Create a logger for our app -->
 	<logger name="com.prestonb" additivity="false">
 		<appender-ref ref="CONSOLE" />
-<!-- 		<appender-ref ref="FILE" /> -->
 	</logger>
 </configuration>

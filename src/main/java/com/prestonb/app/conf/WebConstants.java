@@ -19,6 +19,6 @@ public class WebConstants {
 	public static final class Models {
 		public static final String COMMAND = "command";
 		public static final String AREA = "area";
-		public static final String ERROR = "error";
+		public static final String MESSAGE_SOURCE = "msgSrc";
 	}
 }
