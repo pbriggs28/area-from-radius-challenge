@@ -27,7 +27,7 @@
 
     <div class="form-group">
         <div class="col-md-9 col-md-offset-3">
-            <div id="messages"><springForm:errors path="radius" cssClass="text-error" /></div>
+            <div id="messages"><springForm:errors path="radius" cssClass="text-danger" /></div>
         </div>
     </div>
     <div class="form-group">
