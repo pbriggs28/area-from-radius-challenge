@@ -12,6 +12,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.prestonb.app.conf.WebConstants.Models;
+import com.prestonb.app.conf.WebConstants.Redirects;
+import com.prestonb.app.conf.WebConstants.RequestMappings;
+import com.prestonb.app.conf.WebConstants.Views;
 import com.prestonb.model.RadiusForm;
 import com.prestonb.service.RadiusService;
 
@@ -21,23 +25,33 @@ public class RadiusController {
 	
 	@Autowired private RadiusService radiusService;
 
-	@RequestMapping(value = "/radius", method = RequestMethod.GET)
-	public String radiusPage(ModelMap model) {
-		model.addAttribute("command", new RadiusForm());
+	
+	
+	@RequestMapping(value = RequestMappings.HOME)
+	public String homePage(ModelMap model) {
 		
-		return "radius";
+		return Redirects.RADIUS;
 	}
 
-	@RequestMapping(value = "/radius", method = RequestMethod.POST)
-	public String radiusPagePost(ModelMap model, @ModelAttribute("command") @Valid RadiusForm form,	BindingResult errors) {
+	@RequestMapping(value = RequestMappings.RADIUS, method = RequestMethod.GET)
+	public String radiusPage(ModelMap model) {
+		model.addAttribute(Models.COMMAND, new RadiusForm());
+		
+		return Views.RADIUS;
+	}
+
+	@RequestMapping(value = RequestMappings.RADIUS, method = RequestMethod.POST)
+	public String radiusPagePost(ModelMap model, 
+			@ModelAttribute(value = Models.COMMAND ) @Valid RadiusForm form,
+			BindingResult errors) {
 		
 		if(errors.hasErrors()) {
-			model.addAttribute("error", errors.getFieldError().getDefaultMessage());
-			return "radius";
+			model.addAttribute(Models.ERROR, errors.getFieldError().getDefaultMessage());
+			return Views.RADIUS;
 		} else {
-			model.addAttribute("area", radiusService.calculateArea(form.getRadius()));
+			model.addAttribute(Models.AREA, radiusService.calculateArea(form.getRadius()));
 		}
-		
-		return "radius";
+
+		return Views.RADIUS;
 	}
 }
